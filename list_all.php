@@ -13,16 +13,15 @@ $sth = $pdo->query($sqlstr) or die(ERROR_QUERY."<br>".print_r($pdo->errorInfo(),
 $total_rec = $sth->rowCount();
 
 $data = '';
-while($row = $sth->fetch(PDO::FETCH_ASSOC))
-{
+while($row = $sth->fetch(PDO::FETCH_ASSOC)) {
    $uid = $row['uid'];
-   $usercode = convert_to_html($row['usercode']);
-   $username = convert_to_html($row['username']);
-   $address  = convert_to_html($row['address']);
-   $birthday = convert_to_html($row['birthday']);
-   $height   = convert_to_html($row['height']);
-   $weight   = convert_to_html($row['weight']);
-   $remark   = convert_to_html($row['remark']);
+   $usercode = html_encode($row['usercode']);
+   $username = html_encode($row['username']);
+   $address  = html_encode($row['address']);
+   $birthday = html_encode($row['birthday']);
+   $height   = html_encode($row['height']);
+   $weight   = html_encode($row['weight']);
+   $remark   = html_encode($row['remark']);
    
    $data .= <<< HEREDOC
 <tr>

@@ -12,13 +12,11 @@ $sqlstr = "DELETE FROM person WHERE uid=" . $uid;
 
 // 執行SQL及處理結果
 $sth = $pdo->exec($sqlstr);
-if($sth===FALSE)
-{
+if($sth===FALSE) {
    header('Location: error.php');
    echo print_r($pdo->errorInfo()) . '<br />' . $sqlstr;  // 此列供開發時期偵錯用
 }
-else
-{
+else {
    $refer = $_SERVER['HTTP_REFERER'];  // 呼叫此程式之前頁
    header('Location: ' . $refer);
 }
